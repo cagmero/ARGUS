@@ -372,6 +372,5 @@ SOFTWARE.
 
 **Built with ❤️ for the Algorand ecosystem**
 
-[Report Bug](https://github.com/argus-security/argus-algorand-scanner/issues) • [Request Feature](https://github.com/argus-security/argus-algorand-scanner/issues) • [Documentation](https://github.com/argus-security/argus-algorand-scanner/wiki)
 
 </div>
