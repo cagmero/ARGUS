@@ -1,0 +1,25 @@
+# Core dependencies
+aiofiles>=23.0.0
+click>=8.0.0
+pyyaml>=6.0
+jsonschema>=4.0.0
+rich>=13.0.0
+pathspec>=0.11.0
+
+# Algorand SDK and tools
+py-algorand-sdk>=2.0.0
+pyteal>=0.20.0
+
+# TypeScript/JavaScript parsing
+esprima>=4.0.1
+
+# Optional analyzers (install separately)
+# tealer  # pip install tealer
+# panda-pyteal  # pip install git+https://github.com/scale-it/panda.git
+
+# Development dependencies (optional)
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+black>=22.0.0
+flake8>=4.0.0
+mypy>=1.0.0
