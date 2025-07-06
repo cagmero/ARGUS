@@ -1,0 +1,234 @@
+#pragma version 8
+// Vulnerable TEAL Smart Contract
+// This contract contains INTENTIONAL vulnerabilities for testing purposes
+// DO NOT USE IN PRODUCTION
+
+// VULNERABILITY 1: Missing version pragma validation
+// Should check minimum version requirements
+
+// Global state schema
+// VULNERABILITY 2: Insufficient state schema definition
+// No proper validation of state requirements
+
+// Main program logic
+main:
+    // VULNERABILITY 3: No transaction type validation
+    // Should verify this is an application call
+    
+    // VULNERABILITY 4: Missing fee validation
+    txn Fee
+    int 1000
+    <
+    bnz fee_too_low
+    
+    // VULNERABILITY 5: Unsafe global state access without existence check
+    byte "balance"
+    app_global_get
+    // No app_global_get_ex to check if key exists
+    
+    // VULNERABILITY 6: Hardcoded sensitive values
+    byte "admin_key"
+    byte "HARDCODED_ADMIN_SECRET_123"  // CRITICAL: Hardcoded secret
+    app_global_put
+    
+    // VULNERABILITY 7: Missing sender authorization
+    // No check if sender is authorized to perform operations
+    
+    // Check application call type
+    txn OnCompletion
+    int OptIn
+    ==
+    bnz opt_in
+    
+    txn OnCompletion
+    int NoOp
+    ==
+    bnz no_op
+    
+    // VULNERABILITY 8: Missing proper application call handling
+    // Should handle all possible OnCompletion values
+    err  // Unsafe termination
+    
+opt_in:
+    // VULNERABILITY 9: Unprotected opt-in
+    // Anyone can opt-in without restrictions
+    int 1
+    return
+
+no_op:
+    // Get method selector
+    txn ApplicationArgs 0
+    byte "withdraw"
+    ==
+    bnz withdraw
+    
+    txn ApplicationArgs 0
+    byte "deposit"
+    ==
+    bnz deposit
+    
+    txn ApplicationArgs 0
+    byte "admin_backdoor"
+    ==
+    bnz admin_backdoor
+    
+    txn ApplicationArgs 0
+    byte "random_winner"
+    ==
+    bnz random_winner
+    
+    txn ApplicationArgs 0
+    byte "time_check"
+    ==
+    bnz time_check
+    
+    // VULNERABILITY 10: Default case leads to approval
+    // Should reject unknown methods
+    int 1
+    return
+
+withdraw:
+    // VULNERABILITY 11: Missing access control - CRITICAL
+    // No verification that sender is authorized to withdraw
+    
+    // VULNERABILITY 12: Unchecked arithmetic operations
+    byte "balance"
+    app_global_get
+    txn ApplicationArgs 1
+    btoi
+    -  // Could underflow if amount > balance
+    
+    // VULNERABILITY 13: No bounds checking
+    // Should verify result is not negative
+    
+    byte "balance"
+    swap
+    app_global_put
+    
+    int 1
+    return
+
+deposit:
+    // VULNERABILITY 14: Missing payment transaction verification
+    // Should verify accompanying payment transaction
+    
+    byte "balance"
+    app_global_get
+    txn ApplicationArgs 1
+    btoi
+    +  // VULNERABILITY 15: Potential integer overflow
+    
+    byte "balance"
+    swap
+    app_global_put
+    
+    int 1
+    return
+
+admin_backdoor:
+    // VULNERABILITY 16: Logic bomb with hardcoded condition - HIGH
+    txn Sender
+    addr AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    ==
+    bnz backdoor_access
+    
+    // VULNERABILITY 17: Information disclosure
+    // Error message reveals existence of backdoor
+    byte "Backdoor access denied"
+    log
+    int 0
+    return
+    
+backdoor_access:
+    // VULNERABILITY 18: Backdoor allows complete state manipulation
+    byte "balance"
+    int 0
+    app_global_put
+    
+    byte "owner"
+    txn Sender
+    app_global_put
+    
+    int 1
+    return
+
+random_winner:
+    // VULNERABILITY 19: Weak randomness source - HIGH
+    global LatestTimestamp
+    int 100
+    %  // Using timestamp for randomness - predictable
+    
+    // VULNERABILITY 20: No proper random seed
+    // Should use VRF or other secure randomness
+    
+    byte "last_winner"
+    swap
+    app_global_put
+    
+    int 1
+    return
+
+time_check:
+    // VULNERABILITY 21: Timestamp dependency - MEDIUM
+    global LatestTimestamp
+    int 1640995200  // Hardcoded timestamp
+    ==
+    bnz time_bomb
+    
+    int 1
+    return
+    
+time_bomb:
+    // VULNERABILITY 22: Time-based logic bomb
+    byte "balance"
+    int 0
+    app_global_put
+    
+    byte "contract_destroyed"
+    int 1
+    app_global_put
+    
+    int 1
+    return
+
+fee_too_low:
+    // VULNERABILITY 23: Improper error handling
+    // Should provide more specific error information
+    int 0
+    return
+
+// VULNERABILITY 24: Missing subroutine definitions
+// References to undefined subroutines could cause issues
+
+// VULNERABILITY 25: No proper cleanup on contract deletion
+// Should handle DeleteApplication properly
+
+// VULNERABILITY 26: Missing group transaction validation
+// Should verify group size and transaction types
+
+// VULNERABILITY 27: No rekeyTo protection
+// Should check that RekeyTo is zero address
+
+// VULNERABILITY 28: Missing close remainder protection
+// Should verify CloseRemainderTo is zero address
+
+// VULNERABILITY 29: No asset transaction validation
+// Should handle asset transfers properly if applicable
+
+// VULNERABILITY 30: Insufficient logging
+// Should log important state changes for auditing
+
+// VULNERABILITY 31: No emergency stop mechanism
+// Should have way to pause contract in emergency
+
+// VULNERABILITY 32: Missing upgrade protection
+// Should validate upgrade authorization
+
+// VULNERABILITY 33: No rate limiting
+// Should prevent spam transactions
+
+// VULNERABILITY 34: Insufficient input validation
+// Should validate all application arguments
+
+// VULNERABILITY 35: Missing return value validation
+// Should ensure all code paths return appropriate values
