@@ -1,0 +1,81 @@
+# Default configuration for Algorand Vulnerability Scanner
+
+# Target paths to scan (can be files or directories)
+target_paths:
+  - "."
+
+# File patterns to include
+include_patterns:
+  - "**/*.py"      # Python files (PyTeal, Algopy)
+  - "**/*.teal"    # TEAL files
+  - "**/*.ts"      # TypeScript files
+  - "**/*.tsx"     # TypeScript React files
+  - "**/*.js"      # JavaScript files
+  - "**/*.jsx"     # JavaScript React files
+
+# File patterns to exclude
+exclude_patterns:
+  - "**/node_modules/**"
+  - "**/.git/**"
+  - "**/venv/**"
+  - "**/.venv/**"
+  - "**/env/**"
+  - "**/.env/**"
+  - "**/__pycache__/**"
+  - "**/build/**"
+  - "**/dist/**"
+  - "**/.next/**"
+  - "**/coverage/**"
+  - "**/test/**"
+  - "**/tests/**"
+  - "**/*.test.*"
+  - "**/*.spec.*"
+
+# Analyzers to run
+analyzers:
+  - "builtin"           # Built-in vulnerability checks
+  # - "panda"           # Panda PyTeal analyzer (requires installation)
+  # - "tealer"          # Tealer TEAL analyzer (requires installation)
+  # - "quality-assurance" # Quality Assurance analyzer (requires installation)
+
+# Minimum severity level to report
+severity_threshold: "LOW"  # CRITICAL, HIGH, MEDIUM, LOW, INFO
+
+# Output configuration
+output_format: "json"      # json, text, sarif
+output_file: null          # null for stdout, or specify file path
+
+# Performance settings
+max_workers: 4             # Number of concurrent workers
+timeout: 300               # Analysis timeout in seconds
+
+# Analyzer-specific settings
+analyzer_settings:
+  builtin:
+    # Enable/disable specific checks
+    check_access_control: true
+    check_arithmetic: true
+    check_timestamp_dependency: true
+    check_weak_randomness: true
+    check_state_management: true
+    
+  panda:
+    # Panda-specific options
+    strict_mode: false
+    
+  tealer:
+    # Tealer-specific options
+    detectors: "all"       # "all" or list of specific detectors
+    
+  quality_assurance:
+    # QA-specific options
+    comprehensive: true
+
+# Custom rules (for future extension)
+custom_rules:
+  # Example custom rule
+  # - id: "custom-hardcoded-key"
+  #   pattern: "private_key\\s*=\\s*['\"][^'\"]+['\"]"
+  #   severity: "CRITICAL"
+  #   message: "Hardcoded private key detected"
+  #   file_types: ["python", "typescript"]
