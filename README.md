@@ -9,7 +9,6 @@
 
 **A comprehensive, multi-language vulnerability scanner for Algorand smart contracts**
 
-[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Documentation](#-documentation) • [Contributing](#-contributing)
 
 </div>
 
@@ -65,8 +64,8 @@ Argus is a powerful security analysis tool designed specifically for Algorand sm
 
 ```bash
 # Clone the repository
-git clone https://github.com/argus-security/argus-algorand-scanner.git
-cd argus-algorand-scanner
+git clone https://github.com/cagmero/ARGUS.git
+cd ARGUS
 
 # Run the automated installer
 chmod +x install.sh
@@ -284,13 +283,13 @@ jobs:
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions!
 
 ### Development Setup
 
 ```bash
 # Clone and setup
-git clone https://github.com/argus-security/argus-algorand-scanner.git
+git clone https://github.com/cagmero/ARGUS.git
 cd argus-algorand-scanner
 
 # Install in development mode
@@ -329,18 +328,15 @@ class CustomAnalyzer(BaseAnalyzer):
 - [Algopy Documentation](https://github.com/algorandfoundation/puya)
 - [TEAL Language Reference](https://developer.algorand.org/docs/get-details/dapps/avm/teal/)
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 We extend our heartfelt gratitude to the following projects and their maintainers:
 
 - **[Tealer](https://github.com/algorandfoundation/algokit-cli)** - The Algorand Foundation's official TEAL analyzer, which provides excellent static analysis capabilities for TEAL smart contracts
 - **[Panda](https://github.com/scale-it/panda)** - Scale-IT's PyTeal static analyzer that offers comprehensive security analysis for PyTeal contracts
 - **[Algorand Smart Contract Quality Assurance](https://github.com/metinlamby/algorand-smart-contract-quality-assurance)** - Metin Lambi's quality assurance tools that help ensure smart contract best practices
-- **[Algorand Foundation](https://algorand.foundation/)** - For creating the Algorand blockchain platform and supporting the developer ecosystem
 - **[py-algorand-sdk](https://github.com/algorand/py-algorand-sdk)** - The official Python SDK that makes Algorand development accessible
 - **[PyTeal](https://github.com/algorand/pyteal)** - The Python framework that simplifies TEAL smart contract development
-
-Special thanks to the entire Algorand developer community for their continuous contributions to security research and best practices.
 
 ## 📄 License
 
