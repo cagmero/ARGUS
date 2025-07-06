@@ -7,13 +7,25 @@ import click
 import json
 import yaml
 import logging
+import sys
+import os
 from pathlib import Path
 from typing import List, Optional
 
-from ..core import AlgorandScanner
-from ..models import ScanConfig, SeverityLevel
-from ..utils.output_formatter import OutputFormatter
-from ..utils.config_loader import ConfigLoader
+# Add parent directory to path for relative imports
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
+
+try:
+    from algorand_scanner.core import AlgorandScanner
+    from algorand_scanner.models import ScanConfig, SeverityLevel
+    from algorand_scanner.utils.output_formatter import OutputFormatter
+    from algorand_scanner.utils.config_loader import ConfigLoader
+except ImportError:
+    # Fallback for relative imports
+    from ..core import AlgorandScanner
+    from ..models import ScanConfig, SeverityLevel
+    from ..utils.output_formatter import OutputFormatter
+    from ..utils.config_loader import ConfigLoader
 
 
 @click.command()

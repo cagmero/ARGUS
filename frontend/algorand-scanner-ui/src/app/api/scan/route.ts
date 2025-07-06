@@ -66,30 +66,52 @@ async function runScanner(
   severityThreshold: string
 ): Promise<any> {
   return new Promise((resolve, reject) => {
-    // Use the correct path to the scanner
-    const scannerPath = join(process.cwd(), '..', '..', 'venv', 'bin', 'argus')
+    // Try multiple execution methods
+    const workingDir = join(process.cwd(), '..', '..')
+    const pythonPath = join(workingDir, 'venv', 'bin', 'python3')
     
-    const args = [
+    // Method 1: Try using the installed argus command
+    const argusPath = join(workingDir, 'venv', 'bin', 'argus')
+    
+    let command = argusPath
+    let args = [
       targetPath,
       '--format', 'json',
       '--severity', severityThreshold,
       '--timeout', '60'
     ]
+    
+    // Check if argus command exists, otherwise use python module
+    try {
+      require('fs').accessSync(argusPath, require('fs').constants.F_OK)
+    } catch (error) {
+      // Fallback to python module execution
+      command = pythonPath
+      args = [
+        '-m', 'algorand_scanner.cli.main',
+        targetPath,
+        '--format', 'json',
+        '--severity', severityThreshold,
+        '--timeout', '60'
+      ]
+    }
 
     // Add analyzers
     for (const analyzer of analyzers) {
       args.push('--analyzers', analyzer)
     }
 
-    console.log('Running scanner:', scannerPath, args)
-    console.log('Working directory:', process.cwd())
+    console.log('Running scanner:', command, args)
+    console.log('Working directory:', workingDir)
     
-    const scanProcess = spawn(scannerPath, args, {
+    const scanProcess = spawn(command, args, {
       stdio: ['pipe', 'pipe', 'pipe'],
-      cwd: join(process.cwd(), '..', '..'), // Set working directory to securedapp
+      cwd: workingDir,
       env: {
         ...process.env,
-        PATH: `${join(process.cwd(), '..', '..', 'venv', 'bin')}:${process.env.PATH}`
+        PYTHONPATH: workingDir,
+        PATH: `${join(workingDir, 'venv', 'bin')}:${process.env.PATH}`,
+        VIRTUAL_ENV: join(workingDir, 'venv')
       }
     })
 
