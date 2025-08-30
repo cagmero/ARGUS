@@ -111,37 +111,37 @@ export function FileUpload({ onScanStart, onScanComplete, onScanError, isScannin
       {/* File Upload Area */}
       <div
         {...getRootProps()}
-        className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
+        className={`neo-card p-8 text-center cursor-pointer transition-all duration-150 ${
           isDragActive
-            ? 'border-blue-500 bg-blue-50'
-            : 'border-gray-300 hover:border-gray-400'
+            ? 'bg-neo-green shadow-brutal-lg translate-x-2 translate-y-2'
+            : 'bg-neo-pink hover:shadow-brutal-lg hover:translate-x-1 hover:translate-y-1'
         }`}
       >
         <input {...getInputProps()} />
-        <Upload className="mx-auto h-12 w-12 text-gray-400 mb-4" />
+        <Upload className="mx-auto h-16 w-16 text-black mb-4" />
         {isDragActive ? (
-          <p className="text-blue-600">Drop the files here...</p>
+          <p className="text-black font-black text-xl uppercase">DROP THE FILES HERE!</p>
         ) : (
           <div>
-            <p className="text-gray-600 mb-2">
-              Drag & drop files here, or click to select
+            <p className="text-black font-black text-xl mb-2 uppercase">
+              DRAG & DROP FILES HERE, OR CLICK TO SELECT
             </p>
-            <p className="text-sm text-gray-500">
-              Supports .py, .teal, .ts, .tsx, .js, .jsx files
+            <p className="text-black font-bold uppercase font-mono">
+              SUPPORTS .PY, .TEAL, .TS, .TSX, .JS, .JSX FILES
             </p>
           </div>
         )}
       </div>
 
       {/* Analyzer Selection */}
-      <div className="bg-white rounded-lg shadow-md p-4">
-        <h3 className="text-lg font-semibold mb-3">Select Analyzers</h3>
-        <div className="space-y-2">
+      <div className="neo-card p-6 bg-neo-purple">
+        <h3 className="text-2xl font-black mb-6 text-white uppercase">⚙️ SELECT ANALYZERS</h3>
+        <div className="space-y-4">
           {[
-            { id: 'builtin', name: 'Built-in Scanner', description: 'Basic vulnerability detection' },
-            { id: 'tealer', name: 'Tealer', description: 'TEAL analyzer' },
+            { id: 'builtin', name: 'BUILT-IN SCANNER', description: 'BASIC VULNERABILITY DETECTION' },
+            { id: 'tealer', name: 'TEALER', description: 'TEAL ANALYZER' },
           ].map(analyzer => (
-            <label key={analyzer.id} className="flex items-center space-x-3">
+            <label key={analyzer.id} className="flex items-center space-x-4 cursor-pointer">
               <input
                 type="checkbox"
                 checked={analyzers.includes(analyzer.id)}
@@ -152,11 +152,11 @@ export function FileUpload({ onScanStart, onScanComplete, onScanError, isScannin
                     setAnalyzers(prev => prev.filter(a => a !== analyzer.id))
                   }
                 }}
-                className="rounded border-gray-300"
+                className="w-6 h-6 border-4 border-black bg-white"
               />
               <div>
-                <span className="font-medium">{analyzer.name}</span>
-                <p className="text-sm text-gray-500">{analyzer.description}</p>
+                <span className="font-black text-white text-lg">{analyzer.name}</span>
+                <p className="text-white font-bold font-mono">{analyzer.description}</p>
               </div>
             </label>
           ))}
@@ -165,17 +165,17 @@ export function FileUpload({ onScanStart, onScanComplete, onScanError, isScannin
 
       {/* Uploaded Files */}
       {uploadedFiles.length > 0 && (
-        <div className="bg-white rounded-lg shadow-md p-4">
-          <h3 className="text-lg font-semibold mb-3">Uploaded Files</h3>
+        <div className="neo-card p-6 bg-white">
+          <h3 className="text-2xl font-black mb-6 text-black uppercase">📁 UPLOADED FILES</h3>
           
           {/* Algorand Contracts */}
           {algorandFiles.length > 0 && (
-            <div className="mb-4">
-              <h4 className="text-md font-medium text-green-700 mb-2 flex items-center">
-                <CheckCircle className="w-4 h-4 mr-2" />
-                Algorand Contracts ({algorandFiles.length})
+            <div className="mb-6">
+              <h4 className="text-xl font-black text-black mb-4 flex items-center uppercase">
+                <CheckCircle className="w-6 h-6 mr-3" />
+                ALGORAND CONTRACTS ({algorandFiles.length})
               </h4>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {algorandFiles.map((uploadedFile, index) => (
                   <FileItem
                     key={`algorand-${index}`}
@@ -191,11 +191,11 @@ export function FileUpload({ onScanStart, onScanComplete, onScanError, isScannin
           {/* Non-Algorand Files */}
           {nonAlgorandFiles.length > 0 && (
             <div>
-              <h4 className="text-md font-medium text-orange-700 mb-2 flex items-center">
-                <AlertCircle className="w-4 h-4 mr-2" />
-                Other Files ({nonAlgorandFiles.length})
+              <h4 className="text-xl font-black text-black mb-4 flex items-center uppercase">
+                <AlertCircle className="w-6 h-6 mr-3" />
+                OTHER FILES ({nonAlgorandFiles.length})
               </h4>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {nonAlgorandFiles.map((uploadedFile, index) => (
                   <FileItem
                     key={`other-${index}`}
@@ -214,13 +214,13 @@ export function FileUpload({ onScanStart, onScanComplete, onScanError, isScannin
       <button
         onClick={scanFiles}
         disabled={uploadedFiles.length === 0 || isScanning}
-        className={`w-full py-3 px-4 rounded-lg font-medium transition-colors ${
+        className={`w-full py-6 px-8 font-black text-2xl uppercase transition-all duration-150 ${
           uploadedFiles.length === 0 || isScanning
-            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            : 'bg-blue-600 text-white hover:bg-blue-700'
+            ? 'bg-gray-400 text-gray-600 cursor-not-allowed border-4 border-gray-600'
+            : 'neo-button bg-neo-yellow text-black hover:bg-neo-green'
         }`}
       >
-        {isScanning ? 'Scanning...' : `Scan ${uploadedFiles.length} File(s)`}
+        {isScanning ? '⏳ SCANNING...' : `🔍 SCAN ${uploadedFiles.length} FILE(S)`}
       </button>
     </div>
   )
@@ -235,30 +235,30 @@ function FileItem({ uploadedFile, onRemove, isAlgorand }: {
     switch (type) {
       case 'pyteal':
       case 'algopy':
-        return 'bg-blue-100 text-blue-800'
+        return 'bg-neo-pink text-black'
       case 'teal':
-        return 'bg-green-100 text-green-800'
+        return 'bg-neo-green text-black'
       case 'typescript':
-        return 'bg-purple-100 text-purple-800'
+        return 'bg-neo-purple text-white'
       default:
-        return 'bg-gray-100 text-gray-800'
+        return 'bg-black text-white'
     }
   }
 
   return (
-    <div className={`flex items-center justify-between p-3 rounded-lg border ${
-      isAlgorand ? 'border-green-200 bg-green-50' : 'border-orange-200 bg-orange-50'
+    <div className={`flex items-center justify-between p-4 border-4 border-black shadow-brutal-sm ${
+      isAlgorand ? 'bg-neo-green' : 'bg-neo-orange'
     }`}>
-      <div className="flex items-center space-x-3">
-        <File className="w-5 h-5 text-gray-500" />
+      <div className="flex items-center space-x-4">
+        <File className="w-6 h-6 text-black" />
         <div>
-          <p className="font-medium">{uploadedFile.file.name}</p>
-          <div className="flex items-center space-x-2">
-            <span className="text-sm text-gray-500">
+          <p className="font-black text-black text-lg uppercase">{uploadedFile.file.name}</p>
+          <div className="flex items-center space-x-3 mt-1">
+            <span className="text-black font-bold font-mono">
               {(uploadedFile.file.size / 1024).toFixed(1)} KB
             </span>
             {uploadedFile.contractType && (
-              <span className={`px-2 py-1 rounded-full text-xs font-medium ${getFileTypeColor(uploadedFile.contractType)}`}>
+              <span className={`neo-badge ${getFileTypeColor(uploadedFile.contractType)}`}>
                 {uploadedFile.contractType.toUpperCase()}
               </span>
             )}
@@ -267,7 +267,7 @@ function FileItem({ uploadedFile, onRemove, isAlgorand }: {
       </div>
       <button
         onClick={onRemove}
-        className="text-gray-400 hover:text-red-500 transition-colors"
+        className="bg-black text-white p-2 border-2 border-black hover:bg-white hover:text-black transition-all duration-150 font-bold"
       >
         <X className="w-5 h-5" />
       </button>
