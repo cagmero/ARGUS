@@ -1,58 +1,58 @@
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-8 mt-16">
+    <footer className="bg-black border-t-8 border-white py-12 mt-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-lg font-semibold mb-4">Argus</h3>
-            <p className="text-gray-400 text-sm">
-              Advanced security scanning for Algorand smart contracts across multiple languages and frameworks.
+            <h3 className="text-3xl font-black mb-6 text-neo-yellow uppercase">👁️ ARGUS</h3>
+            <p className="text-white font-bold uppercase font-mono">
+              ADVANCED SECURITY SCANNING FOR ALGORAND SMART CONTRACTS ACROSS MULTIPLE LANGUAGES AND FRAMEWORKS.
             </p>
           </div>
           
           <div>
-            <h4 className="font-semibold mb-3">Supported Technologies</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>PyTeal Contracts</li>
-              <li>Algopy Contracts</li>
-              <li>Raw TEAL</li>
-              <li>TypeScript/JavaScript</li>
+            <h4 className="font-black mb-4 text-neo-pink text-xl uppercase">SUPPORTED TECHNOLOGIES</h4>
+            <ul className="space-y-3 text-white font-bold uppercase">
+              <li className="flex items-center"><span className="w-3 h-3 bg-neo-pink mr-3"></span>PYTEAL CONTRACTS</li>
+              <li className="flex items-center"><span className="w-3 h-3 bg-neo-green mr-3"></span>ALGOPY CONTRACTS</li>
+              <li className="flex items-center"><span className="w-3 h-3 bg-neo-cyan mr-3"></span>RAW TEAL</li>
+              <li className="flex items-center"><span className="w-3 h-3 bg-neo-purple mr-3"></span>TYPESCRIPT/JAVASCRIPT</li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-semibold mb-3">Analyzers</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>Built-in Scanner</li>
-              <li>Tealer Integration</li>
-              <li>Quality Assurance</li>
+            <h4 className="font-black mb-4 text-neo-green text-xl uppercase">ANALYZERS</h4>
+            <ul className="space-y-3 text-white font-bold uppercase">
+              <li className="flex items-center"><span className="w-3 h-3 bg-neo-yellow mr-3"></span>BUILT-IN SCANNER</li>
+              <li className="flex items-center"><span className="w-3 h-3 bg-neo-orange mr-3"></span>TEALER INTEGRATION</li>
+              <li className="flex items-center"><span className="w-3 h-3 bg-neo-cyan mr-3"></span>QUALITY ASSURANCE</li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-semibold mb-3">Resources</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
+            <h4 className="font-black mb-4 text-neo-cyan text-xl uppercase">RESOURCES</h4>
+            <ul className="space-y-3 text-white font-bold uppercase">
               <li>
-                <a href="https://developer.algorand.org" className="hover:text-white transition-colors">
-                  Algorand Developer Portal
+                <a href="https://developer.algorand.org" className="hover:text-neo-yellow transition-colors flex items-center">
+                  <span className="w-3 h-3 bg-white mr-3"></span>ALGORAND DEVELOPER PORTAL
                 </a>
               </li>
               <li>
-                <a href="https://pyteal.readthedocs.io" className="hover:text-white transition-colors">
-                  PyTeal Documentation
+                <a href="https://pyteal.readthedocs.io" className="hover:text-neo-pink transition-colors flex items-center">
+                  <span className="w-3 h-3 bg-white mr-3"></span>PYTEAL DOCUMENTATION
                 </a>
               </li>
               <li>
-                <a href="https://github.com/algorandfoundation/puya" className="hover:text-white transition-colors">
-                  Algopy Documentation
+                <a href="https://github.com/algorandfoundation/puya" className="hover:text-neo-green transition-colors flex items-center">
+                  <span className="w-3 h-3 bg-white mr-3"></span>ALGOPY DOCUMENTATION
                 </a>
               </li>
             </ul>
           </div>
         </div>
         
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-          <p>&copy; 2024 Argus Security Team. All rights reserved. Built for the Algorand ecosystem.</p>
+        <div className="border-t-4 border-white mt-12 pt-8 text-center">
+          <p className="text-white font-black text-lg uppercase font-mono">&copy; 2024 ARGUS SECURITY TEAM. ALL RIGHTS RESERVED. BUILT FOR THE ALGORAND ECOSYSTEM.</p>
         </div>
       </div>
     </footer>

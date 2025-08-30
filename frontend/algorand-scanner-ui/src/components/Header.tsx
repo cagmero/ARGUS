@@ -1,37 +1,37 @@
-import { Shield, Github, ExternalLink } from 'lucide-react'
+import { Github, ExternalLink } from 'lucide-react'
 
 export function Header() {
   return (
-    <header className="bg-white shadow-sm border-b">
-      <div className="container mx-auto px-4 py-4">
+    <header className="bg-black border-b-8 border-white">
+      <div className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="bg-blue-600 p-2 rounded-lg">
-              <Shield className="w-6 h-6 text-white" />
+          <div className="flex items-center space-x-4">
+            <div className="bg-neo-yellow p-3 border-4 border-black shadow-brutal-sm">
+              <span className="text-2xl">👁️</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Argus</h1>
-              <p className="text-sm text-gray-600">Algorand Security Scanner</p>
+              <h1 className="text-3xl font-black text-white uppercase tracking-wide">ARGUS</h1>
+              <p className="text-lg text-neo-yellow font-bold uppercase font-mono">ALGORAND SECURITY SCANNER</p>
             </div>
           </div>
           
-          <nav className="flex items-center space-x-6">
+          <nav className="flex items-center space-x-4">
             <a
-              href="https://github.com/argus-security/argus-algorand-scanner"
+              href="https://github.com/cagmero/ARGUS"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors"
+              className="neo-button bg-neo-pink text-black hover:bg-neo-green flex items-center space-x-2"
             >
               <Github className="w-5 h-5" />
-              <span>GitHub</span>
+              <span>GITHUB</span>
               <ExternalLink className="w-4 h-4" />
             </a>
             
             <a
               href="/docs"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="neo-button bg-neo-green text-black hover:bg-neo-pink"
             >
-              Documentation
+              DOCS
             </a>
           </nav>
         </div>
