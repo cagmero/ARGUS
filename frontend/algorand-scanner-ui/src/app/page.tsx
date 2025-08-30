@@ -54,7 +54,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-neo-cyan">
       <Toaster position="top-right" />
       
       <Header />
@@ -63,26 +63,28 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Algorand Smart Contract Vulnerability Scanner
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Upload your Python, TEAL, or TypeScript files to scan for security vulnerabilities
-            </p>
+            <div className="neo-card p-8 mb-8 bg-neo-yellow">
+              <h1 className="text-6xl font-black text-black mb-4 uppercase tracking-tight">
+                ARGUS
+              </h1>
+              <h2 className="text-2xl font-bold text-black mb-4 uppercase">
+                Algorand Smart Contract Vulnerability Scanner
+              </h2>
+              <p className="text-lg text-black font-bold mb-8 uppercase">
+                Upload your Python, TEAL, or TypeScript files to scan for security vulnerabilities
+              </p>
+            </div>
             
             {/* Supported File Types */}
-            <div className="flex justify-center space-x-6 mb-8">
-              <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow">
-                <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                <span className="text-sm font-medium">Python (.py)</span>
+            <div className="flex justify-center space-x-4 mb-8">
+              <div className="neo-badge bg-neo-pink text-black">
+                <span className="font-mono">Python (.py)</span>
               </div>
-              <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow">
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                <span className="text-sm font-medium">TEAL (.teal)</span>
+              <div className="neo-badge bg-neo-green text-black">
+                <span className="font-mono">TEAL (.teal)</span>
               </div>
-              <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow">
-                <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                <span className="text-sm font-medium">TypeScript (.ts/.tsx)</span>
+              <div className="neo-badge bg-neo-purple text-white">
+                <span className="font-mono">TypeScript (.ts/.tsx)</span>
               </div>
             </div>
           </div>
@@ -98,32 +100,32 @@ export default function Home() {
               />
               
               {/* Features */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold mb-4">Scanner Features</h3>
-                <ul className="space-y-2 text-sm text-gray-600">
+              <div className="neo-card p-6 bg-neo-orange">
+                <h3 className="text-2xl font-black mb-6 text-black uppercase">🛡️ Scanner Features</h3>
+                <ul className="space-y-3 text-black font-bold">
                   <li className="flex items-center">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                    Access control vulnerability detection
+                    <span className="w-4 h-4 bg-black mr-4 rotate-45"></span>
+                    ACCESS CONTROL VULNERABILITY DETECTION
                   </li>
                   <li className="flex items-center">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                    Arithmetic overflow/underflow checks
+                    <span className="w-4 h-4 bg-black mr-4 rotate-45"></span>
+                    ARITHMETIC OVERFLOW/UNDERFLOW CHECKS
                   </li>
                   <li className="flex items-center">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                    Timestamp manipulation detection
+                    <span className="w-4 h-4 bg-black mr-4 rotate-45"></span>
+                    TIMESTAMP MANIPULATION DETECTION
                   </li>
                   <li className="flex items-center">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                    Weak randomness source identification
+                    <span className="w-4 h-4 bg-black mr-4 rotate-45"></span>
+                    WEAK RANDOMNESS SOURCE IDENTIFICATION
                   </li>
                   <li className="flex items-center">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                    State management issue detection
+                    <span className="w-4 h-4 bg-black mr-4 rotate-45"></span>
+                    STATE MANAGEMENT ISSUE DETECTION
                   </li>
                   <li className="flex items-center">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                    Integration with Panda, Tealer, and QA tools
+                    <span className="w-4 h-4 bg-black mr-4 rotate-45"></span>
+                    INTEGRATION WITH PANDA, TEALER, AND QA TOOLS
                   </li>
                 </ul>
               </div>
