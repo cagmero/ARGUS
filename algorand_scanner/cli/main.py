@@ -12,6 +12,26 @@ import os
 from pathlib import Path
 from typing import List, Optional
 
+ASCII_ART = """
+    ╔═══════════════════════════════════════════════════════════════════════════════╗
+    ║                                                                               ║
+    ║      █████╗ ██████╗  ██████╗ ██╗   ██╗███████╗                              ║
+    ║     ██╔══██╗██╔══██╗██╔════╝ ██║   ██║██╔════╝                              ║
+    ║     ███████║██████╔╝██║  ███╗██║   ██║███████╗                              ║
+    ║     ██╔══██║██╔══██╗██║   ██║██║   ██║╚════██║                              ║
+    ║     ██║  ██║██║  ██║╚██████╔╝╚██████╔╝███████║                              ║
+    ║     ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝                              ║
+    ║                                                                               ║
+    ║                    👁️  The All-Seeing Guardian  👁️                          ║
+    ║                  Algorand Smart Contract Scanner                             ║
+    ║                                                                               ║
+    ║    "In Greek mythology, Argus Panoptes was a giant with a hundred eyes,      ║
+    ║     who could see everything. Like our mythical namesake, ARGUS scans        ║
+    ║     your smart contracts with unwavering vigilance."                         ║
+    ║                                                                               ║
+    ╚═══════════════════════════════════════════════════════════════════════════════╝
+"""
+
 # Add parent directory to path for relative imports
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
@@ -66,6 +86,11 @@ def main(paths: tuple, config: Optional[str], analyzers: tuple, output: Optional
         argus . -f text -o report.txt       # Generate text report
         argus . -c config.yaml              # Use configuration file
     """
+    
+    # Display ASCII art banner (unless quiet mode)
+    if not quiet:
+        click.echo(ASCII_ART)
+        click.echo()
     
     # Setup logging
     if verbose:
